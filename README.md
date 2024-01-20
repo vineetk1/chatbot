@@ -1,4 +1,4 @@
-# Sequence-tagging using Deep Learning
+# Chatbot
 ## Requirements
 * PyTorch version >= 1.13.1+cu117
 * Python version >= 3.10.4

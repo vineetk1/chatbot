@@ -19,8 +19,8 @@ class Inference():
 
     def __init__(self):
         super().__init__()
-        dataframes_dirPath: pathlib.Path = pathlib.Path(
-            'experiments/5').resolve(strict=True)
+        dataframes_dirPath: pathlib.Path = pathlib.Path.cwd().resolve(
+            strict=True)
         df_metadata_file: pathlib.Path = dataframes_dirPath.joinpath(
             'df_metadata')
         with df_metadata_file.open('rb') as file:
@@ -36,7 +36,7 @@ class Inference():
         # following line has dependence on Lightning
         self.model = Model.load_from_checkpoint(
             # ******* NOTE: when checkpoint changes, also change dataframes_dirPath *******
-            '/home/vin/sequence-tagging/experiments/5/model=bert,model_type=bert-large-uncased,tokenizer_type=bert/ckpts_v0/checkpoints/lr_sched=ReduceLROnPlateau,factor=0.5,mode=min,patience=4,optz=Adam,lr=1e-05,epoch=20-val_loss=0.01242.ckpt'
+            'lr_sched=ReduceLROnPlateau,factor=0.5,mode=min,patience=4,optz=Adam,lr=1e-05,epoch=20-val_loss=0.01242.ckpt'
         )
         #self.model = torch.quantization.quantize_dynamic(self.model,
         #                                                 {torch.nn.Linear},

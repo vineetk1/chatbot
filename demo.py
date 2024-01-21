@@ -9,11 +9,15 @@ with gr.Blocks() as demo:
     nnOut_userOut = gr.State()
     examples = gr.Examples(
         examples=[
-            "2022 - 2024 red vf 9 vinfast less than $32000 5000 miles or less", "black",
-            "less than 8000 miles", "remove red", "remove $32000 8000 miles",
+            "2022 - 2024 red vf 9 vinfast less than $32000 5000 miles or less",
+            "black",
+            "less than 8000 miles",
+            "remove red",
+            "remove $32000 8000 miles",
         ],
         inputs=[msg],
-        label="Familiarize yourself with the interface by running the following examples by clicking on them one-by-one from left-to-right:",
+        label=
+        "Familiarize yourself with the interface by running the following examples by clicking on them one-by-one from left-to-right:",
     )
 
     def respond(message, chat_history):
@@ -36,6 +40,14 @@ with gr.Blocks() as demo:
         sessionId = 98
         nnOut_userOut_temp = inference.batching(sessionId, message,
                                                 prevTrnUserOut)
+        #nnOut_userOut_temp = {
+        #    'brand': ['vinfast'],
+        #    'model': ['vf 9'],
+        #    'color': ['red'],
+        #    'mileage': [],
+        #    'price': ['less 32000 $'],
+        #    'year': ['2022 - 2024']
+        #}
         if isinstance(nnOut_userOut_temp, str):
             if not chat_history:
                 nnOut_userOut = 0
